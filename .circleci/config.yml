@@ -4,9 +4,12 @@ jobs:
   test:
     docker:
       - image: circleci/python:3.8.1
+    parameters:
+      envvar:
+        type: string
     environment:
       EXPECTED_VARIABLE: "Hello!"
-      TEST_VARIABLE: $FROM_PROJECT
+      TEST_VARIABLE: << parameters.envvar >>
     steps:
       - checkout
       - run: python3 python/test.py
@@ -14,4 +17,6 @@ jobs:
 workflows:
   test:
     jobs:
-      - test
+      - test:
+          envvar: $FROM_PROJECT
+            
