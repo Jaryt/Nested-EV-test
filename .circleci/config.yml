@@ -11,7 +11,8 @@ jobs:
       EXPECTED_VARIABLE: "Hello!"
     steps:
       - checkout
-      - run: export TEST_VARIABLE=$FROM_PROJECT && python3 python/test.py
+      - run: echo "export TEST_VARIABLE=$FROM_PROJECT" >> $BASH_ENV
+      - run: python3 python/test.py
 
 workflows:
   test:
