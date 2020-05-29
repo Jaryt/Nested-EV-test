@@ -11,7 +11,7 @@ jobs:
       EXPECTED_VARIABLE: "Hello!"
     steps:
       - checkout
-      - run: export TEST_VARIABLE=<< parameters.envvar >>
+      - run: export TEST_VARIABLE="<< parameters.envvar >>"
       - run: python3 python/test.py
 
 workflows:
