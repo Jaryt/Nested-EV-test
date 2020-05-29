@@ -11,8 +11,7 @@ jobs:
       EXPECTED_VARIABLE: "Hello!"
     steps:
       - checkout
-      - run: export TEST_VARIABLE=$FROM_PROJECT
-      - run: python3 python/test.py
+      - run: export TEST_VARIABLE=$FROM_PROJECT && python3 python/test.py
 
 workflows:
   test:
