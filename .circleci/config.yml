@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.8.1
+    environment:
+      EXPECTED_VARIABLE: "Hello!"
+      TEST_VARIABLE: "$FROM_PROJECT"
+    steps:
+      - checkout
+      - run: python3 python/test.py
+
+workflows:
+  test:
+    jobs:
+      - test
